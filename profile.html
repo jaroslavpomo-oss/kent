@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Схавал kenta</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+
+<header>
+    <a class="logo" href="index.html">/// Схавал <span>kenta</span></a>
+    <div class="nav">
+        <a href="index.html" id="nav-home">Меню</a>
+        <a href="promo.html" id="nav-promo">Акции</a>
+        <a href="about.html" id="nav-about2">О нас</a>
+        <a class="cart" onclick="openCart()">
+            🛒 <span class="cart-badge" id="cartCount">0</span>
+        </a>
+        <a class="profile-btn active" href="profile.html" id="nav-profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+                <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<div class="profile-layout">
+    <aside class="profile-sidebar">
+        <div class="profile-avatar">👤</div>
+        <button class="profile-nav-btn active" onclick="switchProfile('info',this)"><span style="font-size:18px;width:24px;"></span>Личные данные</button>
+        <button class="profile-nav-btn" onclick="switchProfile('payment',this)"><span style="font-size:18px;width:24px;"></span>Способ оплаты</button>
+        <button class="profile-nav-btn" onclick="switchProfile('notifs',this)"><span style="font-size:18px;width:24px;"></span>Уведомления</button>
+        <button class="profile-nav-btn" onclick="switchProfile('support',this)"><span style="font-size:18px;width:24px;"></span>Поддержка</button>
+    </aside>
+
+    <main>
+        <div class="profile-section active" id="ps-info">
+            <h2>Личные данные</h2>
+            <div class="form-row">
+                <div class="form-group"><label class="form-label">Имя</label><input class="form-input" placeholder="Введите имя"></div>
+                <div class="form-group"><label class="form-label">Фамилия</label><input class="form-input" placeholder="Введите фамилию"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label class="form-label">Телефон</label><input class="form-input" placeholder="+7 (___) ___-__-__"></div>
+                <div class="form-group"><label class="form-label">Email</label><input class="form-input" placeholder="example@mail.com"></div>
+            </div>
+            <div class="form-group" style="margin-bottom:24px;"><label class="form-label">Дата рождения</label><input class="form-input" type="date"></div>
+            <button class="btn-primary">Сохранить изменения</button>
+        </div>
+
+        <div class="profile-section" id="ps-payment">
+            <h2>Способ оплаты</h2>
+            <div class="payment-cards" id="paymentCards">
+                <div class="pay-card" onclick="selectCard(this)">
+                    <div class="pay-card-left"><span class="pay-icon"></span><div><div class="pay-name">Банковская карта</div></div></div>
+                    <div class="pay-radio"></div>
+                </div>
+                <div class="pay-card" onclick="selectCard(this)">
+                    <div class="pay-card-left"><span class="pay-icon"></span><div><div class="pay-name">Наличными</div></div></div>
+                    <div class="pay-radio"></div>
+                </div>
+                <div class="pay-card" onclick="selectCard(this)">
+                    <div class="pay-card-left"><span class="pay-icon"></span><div><div class="pay-name">QR-код / СБП</div></div></div>
+                    <div class="pay-radio"></div>
+                </div>
+            </div>
+
+            <button class="add-card-btn" onclick="toggleAddCard()">
+                <span>+</span> Добавить карту
+            </button>
+
+            <div class="add-card-form" id="addCardForm">
+                <div class="form-row">
+                    <div class="form-group form-group-full"><label class="form-label">Номер карты</label><input class="form-input" id="cardNumber" placeholder="0000 0000 0000 0000"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Срок действия</label><input class="form-input" id="cardExpiry" placeholder="ММ/ГГ"></div>
+                    <div class="form-group"><label class="form-label">CVV</label><input class="form-input" id="cardCvv" placeholder="***" type="password"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group form-group-full"><label class="form-label">Имя держателя</label><input class="form-input" id="cardHolder" placeholder="IVAN IVANOV"></div>
+                </div>
+                <button class="btn-primary" onclick="saveCard()">Добавить карту</button>
+            </div>
+        </div>
+
+        <div class="profile-section" id="ps-notifs">
+            <h2>Уведомления</h2>
+            <div class="notif-list">
+                <div class="notif-row"><div><div class="notif-title">Акции и скидки</div><div class="notif-desc">Узнавай первым о новых акциях</div></div><div class="toggle on" onclick="toggleSwitch(this)"></div></div>
+                <div class="notif-row"><div><div class="notif-title">Статус заказа</div><div class="notif-desc">Уведомления о готовности и доставке</div></div><div class="toggle on" onclick="toggleSwitch(this)"></div></div>
+                <div class="notif-row"><div><div class="notif-title">Новинки меню</div><div class="notif-desc">Сообщения о новых блюдах</div></div><div class="toggle" onclick="toggleSwitch(this)"></div></div>
+                <div class="notif-row"><div><div class="notif-title">Push-уведомления</div><div class="notif-desc">Мгновенные уведомления в браузере</div></div><div class="toggle on" onclick="toggleSwitch(this)"></div></div>
+                <div class="notif-row"><div><div class="notif-title">Email-рассылка</div><div class="notif-desc">Еженедельная подборка акций</div></div><div class="toggle" onclick="toggleSwitch(this)"></div></div>
+            </div>
+        </div>
+
+        <div class="profile-section" id="ps-support">
+            <h2>Поддержка</h2>
+            <div class="support-list">
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Позвонить нам</div><div class="support-desc">+7 (800) 123-45-67 · Бесплатно</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Написать на email</div><div class="support-desc">support@kenta.ru</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Среднее время ожидания</div><div class="support-desc">Нажми, чтобы узнать</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+                <div class="faq-answer">Среднее время ожидания заказа — <strong style="color:#fff;">20 минут</strong>. В часы пик может увеличиваться до 30 минут.</div>
+
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Часы работы</div><div class="support-desc">Нажми, чтобы узнать</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+                <div class="faq-answer">Мы работаем ежедневно с <strong style="color:#fff;">9:00</strong> до <strong style="color:#fff;">23:00</strong>. Без выходных!</div>
+
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Можно ли устроиться с 16 лет?</div><div class="support-desc">Нажми, чтобы узнать</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+                <div class="faq-answer">Да, можно! Мы принимаем на работу кандидатов <strong style="color:#fff;">с 16 лет</strong> на должности кассира и помощника повара. Ждём твоё резюме!</div>
+
+                <div class="support-card" onclick="toggleFaq(this)">
+                    <div><div class="support-name">Есть ли доставка?</div><div class="support-desc">Нажми, чтобы узнать</div></div>
+                    <span class="support-arrow">›</span>
+                </div>
+                <div class="faq-answer">Да, мы доставляем заказы в радиусе <strong style="color:#fff;">5 км</strong> от ресторана. Минимальная сумма заказа — <strong style="color:#fff;">299 ₽</strong>. Доставка бесплатная при заказе от 599 ₽.</div>
+            </div>
+        </div>
+    </main>
+</div>
+</div>
+
+<div id="cartPanel" class="cart-panel">
+    <div class="cart-header"><h2>🛒 <span>Корзина</span></h2><button onclick="closeCart()">✕</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+    <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
+</div>
+<div id="overlay" class="overlay" onclick="closeCart()"></div>
+<div id="orderModal" class="order-modal">
+    <h2>Заказ оформлен!</h2>
+    <p>Ваш заказ принят и готовится</p>
+    <div class="time">67 минут</div>
+    <p style="font-size: 0.95rem; color: #666;">Время ожидания</p>
+    <button onclick="closeOrderModal()">Отлично!</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="cart.js"></script>
+<script>
+let savedCards = [];
+
+function loadCards() {
+    const saved = localStorage.getItem('savedCards');
+    if (saved) { try { savedCards = JSON.parse(saved); } catch(e) { savedCards = []; } }
+    renderCards();
+}
+
+function saveCards() { localStorage.setItem('savedCards', JSON.stringify(savedCards)); }
+
+function renderCards() {
+    const container = document.getElementById('paymentCards');
+    document.querySelectorAll('.saved-card').forEach(el => el.remove());
+    savedCards.forEach((card, index) => {
+        const div = document.createElement('div');
+        div.className = 'pay-card saved-card';
+        div.innerHTML = `
+            <div class="pay-card-left">
+                <span class="pay-icon">💳</span>
+                <div><div class="pay-name">${card.holder}</div><div class="pay-num">•••• •••• •••• ${card.number.slice(-4)}</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <div class="pay-radio"></div>
+                <button class="delete-card-btn" onclick="deleteCard(${index})" title="Удалить карту">✕</button>
+            </div>
+        `;
+        div.onclick = function() { selectCard(this); };
+        container.appendChild(div);
+    });
+}
+
+function deleteCard(index) {
+    savedCards.splice(index, 1);
+    saveCards();
+    renderCards();
+    showToast('Карта удалена');
+}
+
+function selectCard(card) {
+    document.querySelectorAll('.pay-card').forEach(c => {
+        c.classList.remove('selected');
+        const radio = c.querySelector('.pay-radio');
+        if (radio) radio.classList.remove('checked');
+    });
+    card.classList.add('selected');
+    const radio = card.querySelector('.pay-radio');
+    if (radio) radio.classList.add('checked');
+}
+
+function switchProfile(id, btn) {
+    document.querySelectorAll('.profile-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.profile-nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('ps-' + id).classList.add('active');
+    if (btn) btn.classList.add('active');
+}
+
+function toggleSwitch(el) { el.classList.toggle('on'); }
+
+function toggleFaq(card) {
+    const answer = card.nextElementSibling;
+    const arrow = card.querySelector('.support-arrow');
+    if (answer && answer.classList.contains('faq-answer')) {
+        answer.classList.toggle('open');
+        if (arrow) arrow.classList.toggle('open');
+    }
+}
+
+function toggleAddCard() {
+    const form = document.getElementById('addCardForm');
+    form.classList.toggle('open');
+    if (form.classList.contains('open')) {
+        showToast('Заполните данные карты');
+    } else {
+        document.querySelectorAll('#addCardForm .form-input').forEach(inp => inp.value = '');
+        showToast('Добавление карты отменено');
+    }
+}
+
+function saveCard() {
+    const number = document.getElementById('cardNumber');
+    const expiry = document.getElementById('cardExpiry');
+    const cvv = document.getElementById('cardCvv');
+    const holder = document.getElementById('cardHolder');
+    
+    let empty = false;
+    [number, expiry, cvv, holder].forEach(inp => {
+        if (!inp.value.trim()) {
+            inp.style.borderColor = '#ff1e1e';
+            empty = true;
+        } else {
+            inp.style.borderColor = '#2a2a2a';
+        }
+    });
+    
+    if (empty) {
+        showToast('Заполните все поля');
+        return;
+    }
+    
+    savedCards.push({
+        number: number.value.replace(/\s/g, ''),
+        expiry: expiry.value,
+        cvv: cvv.value,
+        holder: holder.value.toUpperCase()
+    });
+    saveCards();
+    renderCards();
+    [number, expiry, cvv, holder].forEach(inp => inp.value = '');
+    document.getElementById('addCardForm').classList.remove('open');
+    showToast('Карта успешно добавлена!');
+}
+
+loadCards();
+</script>
+</body>
+</html>
