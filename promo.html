@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Схавал kenta</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+
+<header>
+    <a class="logo" href="index.html">/// Схавал <span>kenta</span></a>
+    <div class="nav">
+        <a href="index.html" id="nav-home">Меню</a>
+        <a href="promo.html" class="active" id="nav-promo">Акции</a>
+        <a href="about.html" id="nav-about2">О нас</a>
+        <a class="cart" onclick="openCart()">
+            🛒 <span class="cart-badge" id="cartCount">0</span>
+        </a>
+        <a class="profile-btn" href="profile.html" id="nav-profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+                <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<h1 class="page-title">Акции</h1>
+
+<div class="promo-grid">
+    <div class="promo-card">
+        <span class="promo-badge">Хит</span>
+        <div class="promo-title">2 бургера по цене 1</div>
+        <div class="promo-desc">Каждую пятницу — двойная порция счастья. Купи один бургер и получи второй бесплатно.</div>
+        <div class="promo-deadline">До 30 июня 2026</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge">Новинка</span>
+        <div class="promo-title">Комбо на двоих −30%</div>
+        <div class="promo-desc">Два бургера, два картофеля фри и два напитка со скидкой 30%. Идеально для компании.</div>
+        <div class="promo-deadline">Постоянная акция</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge promo-badge gray">Скоро</span>
+        <div class="promo-title">Счастливые часы</div>
+        <div class="promo-desc">С 14:00 до 16:00 — скидка 15% на всё меню. Только для гостей зала.</div>
+        <div class="promo-deadline">С 1 июля 2026</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge">Акция</span>
+        <div class="promo-title">Завтрак за полцены</div>
+        <div class="promo-desc">Каждый будний день с 8:00 до 11:00 — скидка 50% на завтраки.</div>
+        <div class="promo-deadline">До 31 июля 2026</div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<h2 style="font-size:28px;font-weight:700;text-transform:uppercase;margin-bottom:24px;">Промокоды</h2>
+<p style="color:#8c8c8c;margin-bottom:20px;">Нажми на код — он скопируется автоматически</p>
+
+<div class="promo-grid">
+    <div class="promo-card">
+        <span class="promo-badge">−20%</span>
+        <div class="promo-title">Первый заказ</div>
+        <div class="promo-desc">Скидка 20% на первый онлайн-заказ. Введи код при оформлении.</div>
+        <div class="promo-code" onclick="copyCode('KENTA20')">KENTA20</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge">−15%</span>
+        <div class="promo-title">Скидка выходного дня</div>
+        <div class="promo-desc">Каждые выходные — особые условия для наших гостей.</div>
+        <div class="promo-code" onclick="copyCode('WEEKEND15')">WEEKEND15</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge">−10%</span>
+        <div class="promo-title">День рождения</div>
+        <div class="promo-desc">В свой особый день получи скидку 10% на весь заказ.</div>
+        <div class="promo-code" onclick="copyCode('BDAY10')">BDAY10</div>
+    </div>
+    <div class="promo-card">
+        <span class="promo-badge">−5%</span>
+        <div class="promo-title">Друг привёл друга</div>
+        <div class="promo-desc">Поделись кодом с другом — оба получите скидку на следующий заказ.</div>
+        <div class="promo-code" onclick="copyCode('FRIEND5')">FRIEND5</div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<h2 style="font-size:28px;font-weight:700;text-transform:uppercase;margin-bottom:24px;">Купоны</h2>
+<p style="color:#8c8c8c;margin-bottom:20px;">Предъяви купон на кассе или в приложении</p>
+
+<div class="promo-grid">
+    <div class="coupon-card">
+        <div class="coupon-left">
+            <div>
+                <div class="coupon-title">Картофель фри в подарок</div>
+                <div class="coupon-desc">При заказе от 499 ₽ — средний картофель фри бесплатно</div>
+                <div class="coupon-exp">До 30 июня 2026</div>
+            </div>
+        </div>
+        <div class="coupon-cut"></div>
+        <div class="coupon-right">
+            <div class="coupon-code-v">FRIES<br>GIFT</div>
+            <button class="coupon-use-btn" onclick="showToast('Купон активирован!')">Активировать</button>
+        </div>
+    </div>
+    <div class="coupon-card">
+        <div class="coupon-left">
+            <div>
+                <div class="coupon-title">Бесплатный соус</div>
+                <div class="coupon-desc">Соус на выбор бесплатно к любому заказу без условий</div>
+                <div class="coupon-exp">До 31 июля 2026</div>
+            </div>
+        </div>
+        <div class="coupon-cut"></div>
+        <div class="coupon-right">
+            <div class="coupon-code-v">SAUCE<br>FREE</div>
+            <button class="coupon-use-btn" onclick="showToast('Купон активирован! ')">Активировать</button>
+        </div>
+    </div>
+    <div class="coupon-card">
+        <div class="coupon-left">
+            <div>
+                <div class="coupon-title">Напиток 0.5л бесплатно</div>
+                <div class="coupon-desc">Coca-Cola, Sprite или Fanta в подарок при заказе бургера</div>
+                <div class="coupon-exp">До 15 июля 2026</div>
+            </div>
+        </div>
+        <div class="coupon-cut"></div>
+        <div class="coupon-right">
+            <div class="coupon-code-v">DRINK<br>ON US</div>
+            <button class="coupon-use-btn" onclick="showToast('Купон активирован!')">Активировать</button>
+        </div>
+    </div>
+    <div class="coupon-card">
+        <div class="coupon-left">
+            <div>
+                <div class="coupon-title">Второй бургер −50%</div>
+                <div class="coupon-desc">Купи один бургер из меню и получи второй за полцены</div>
+                <div class="coupon-exp">До 20 июля 2026</div>
+            </div>
+        </div>
+        <div class="coupon-cut"></div>
+        <div class="coupon-right">
+            <div class="coupon-code-v">B2<br>HALF</div>
+            <button class="coupon-use-btn" onclick="showToast('Купон активирован! 🎉')">Активировать</button>
+        </div>
+    </div>
+</div>
+
+</div>
+<div id="cartPanel" class="cart-panel">
+    <div class="cart-header"><h2>🛒 <span>Корзина</span></h2><button onclick="closeCart()">✕</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+    <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
+</div>
+<div id="overlay" class="overlay" onclick="closeCart()"></div>
+<div id="orderModal" class="order-modal">
+    <h2>Заказ оформлен!</h2>
+    <p>Ваш заказ принят и готовится</p>
+    <div class="time">67 минут</div>
+    <p style="font-size: 0.95rem; color: #666;">Время ожидания</p>
+    <button onclick="closeOrderModal()">Отлично!</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="cart.js"></script>
+<script>
+    function switchTab(id, btn) {
+        document.querySelectorAll('[id^="rtab-"]').forEach(t => t.style.display = 'none');
+        document.querySelectorAll('.rest-tab').forEach(b => b.classList.remove('active'));
+        document.getElementById('rtab-' + id).style.display = 'block';
+        if (btn) btn.classList.add('active');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схавал kenta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <a class="logo" href="index.html">/// Схавал <span>kenta</span></a>
+            <div class="nav">
+                <a href="index.html" class="active" id="nav-home">Меню</a>
+                <a href="promo.html" id="nav-promo">Акции</a>
+                <a href="about.html" id="nav-about2">О нас</a>
+                <a class="cart" onclick="openCart()">
+                    🛒 <span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <a class="profile-btn" href="profile.html" id="nav-profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+                        <path
+                            d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z" />
+                    </svg>
+                </a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-text">
+                <h1>
+                    ЛЕГЕНДАРНЫЙ <span class="red">БУРГЕР</span><br>
+                    <span class="red">НЕ УСТОЯТЬ</span> ПЕРЕД НИМ
+                </h1>
+                <p>Сочная куриная грудка, свежие овощи и фирменный соус в идеальной булочке</p>
+            </div>
+            <img id="heroBurger" src="bur1.png" alt="Бургер">
+        </section>
+
+        <div class="section-title">
+            ПОПРОБУЙТЕ <span>НАШЕ ЛУЧШЕЕ</span><br>
+            <span>БЛЮДА</span>
+        </div>
+
+        <div class="cards">
+            <div class="card" data-id="1" data-title="Легендарный бургер" data-price="399.99">
+                <img class="animated-food"
+                    data-frames="burger1.png,burger2.png,burger3.png,burger4.png,burger5.png,burger6.png"
+                    src="burger1.png" alt="">
+                <div class="card-content">
+                    <h3>Легендарный бургер</h3>
+                    <p>Сочная куриная грудка, свежие овощи и фирменный соус в идеальной булочке</p>
+                    <div class="price">399.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(1)">+</button>
+            </div>
+            <div class="card" data-id="2" data-title="Острые крылышки" data-price="199.99">
+                <img class="animated-food"
+                    data-frames="chicken1.png,chicken2.png,chicken3.png,chicken4.png,chicken5.png,chicken6.png"
+                    src="chicken1.png" alt="">
+                <div class="card-content">
+                    <h3>Острые крылышки</h3>
+                    <p>Хрустящие крылышки в остром фирменном соусе</p>
+                    <div class="price">199.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(2)">+</button>
+            </div>
+            <div class="card" data-id="3" data-title="Картошка фри" data-price="119.99">
+                <img class="animated-food"
+                    data-frames="fries1.png,fries2.png,fries3.png,fries4.png,fries5.png,fries6.png" src="fries1.png"
+                    alt="">
+                <div class="card-content">
+                    <h3>Картошка фри</h3>
+                    <p>Хрустящие золотые палочки с нежной сердцевиной и лёгкой солью</p>
+                    <div class="price">119.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(3)">+</button>
+            </div>
+            <div class="card" data-id="4" data-title="Картошка по деревенски" data-price="139.99">
+                <img class="animated-food"
+                    data-frames="potato1.png,potato2.png,potato3.png,potato4.png,potato5.png,potato6.png"
+                    src="potato1.png" alt="">
+                <div class="card-content">
+                    <h3>Картошка по деревенски</h3>
+                    <p>Ароматные дольки картофеля с травами, румяные снаружи и мягкие внутри</p>
+                    <div class="price">139.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(4)">+</button>
+            </div>
+        </div>
+
+        <h2 class="drinks">НАПИТКИ</h2>
+
+        <div class="cards">
+            <div class="card" data-id="5" data-title="Кола" data-price="129.99">
+                <img class="animated-food" data-frames="cola1.png,cola2.png,cola3.png,cola4.png,cola5.png,cola6.png"
+                    src="cola1.png" alt="">
+                <div class="card-content">
+                    <h3>Кола</h3>
+                    <p>Классический искристый вкус с карамельными нотками</p>
+                    <div class="price">129.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(5)">+</button>
+            </div>
+            <div class="card" data-id="6" data-title="Фанта" data-price="129.99">
+                <img class="animated-food"
+                    data-frames="fanta1.png,fanta2.png,fanta3.png,fanta4.png,fanta5.png,fanta6.png" src="fanta1.png"
+                    alt="">
+                <div class="card-content">
+                    <h3>Фанта</h3>
+                    <p>Солнечный цитрусовый вкус с апельсиновой свежестью и лёгкой кислинкой</p>
+                    <div class="price">129.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(6)">+</button>
+            </div>
+            <div class="card" data-id="7" data-title="Спрайт" data-price="129.99">
+                <img class="animated-food"
+                    data-frames="sprite1.png,sprite2.png,sprite3.png,sprite4.png,sprite5.png,sprite6.png"
+                    src="sprite1.png" alt="">
+                <div class="card-content">
+                    <h3>Спрайт</h3>
+                    <p>Лаймово-лимонная свежесть с хрустящими пузырьками</p>
+                    <div class="price">129.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(7)">+</button>
+            </div>
+            <div class="card" data-id="8" data-title="Кофе-Латте" data-price="149.99">
+                <img class="animated-food"
+                    data-frames="latte1.png,latte2.png,latte3.png,latte4.png,latte5.png,latte6.png" src="latte1.png"
+                    alt="">
+                <div class="card-content">
+                    <h3>Кофе-Латте</h3>
+                    <p>Мягкий, шелковистый кофе с воздушной молочной пенкой</p>
+                    <div class="price">149.99 ₽</div>
+                </div>
+                <button class="plus" onclick="addToCart(8)">+</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>Схавал <span>kenta</span></h2>
+                </div>
+                <div class="footer-links">
+                    <h3>Контакты</h3>
+                    <a href="https://wa.me/79999999999" target="_blank">WhatsApp</a>
+                    <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
+                    <a href="https://vk.com/yourvk" target="_blank">ВКонтакте</a>
+                    <p>г. Барнаул, ул. Ленина, 46, внутренний двор</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Схавал kenta. Все права защищены.
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h2>🛒 <span>Корзина</span></h2>
+            <button onclick="closeCart()">✕</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+        <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
+    </div>
+    <div id="overlay" class="overlay" onclick="closeCart()"></div>
+
+    <div id="orderModal" class="order-modal">
+        <h2>Заказ оформлен!</h2>
+        <p>Ваш заказ принят и готовится</p>
+        <div class="time">67 минут</div>
+        <p style="font-size: 0.95rem; color: #666;">Время ожидания</p>
+        <button onclick="closeOrderModal()">Отлично!</button>
+    </div>
+
+
+    <div class="toast" id="toast"></div>
+    <script src="cart.js"></script>
+    <script>
+
+        let foods = document.querySelectorAll('.animated-food');
+        foods.forEach(function (food) {
+            let interval;
+            let frames = food.dataset.frames.split(',');
+            food.parentElement.addEventListener('mouseenter', function () {
+                let index = 0;
+                interval = setInterval(function () {
+                    food.src = frames[index];
+                    index++;
+                    if (index >= frames.length) index = 0;
+                }, 120);
+            });
+            food.parentElement.addEventListener('mouseleave', function () {
+                clearInterval(interval);
+                food.src = frames[0];
+            });
+        });
+
+        let heroBurger = document.querySelector('#heroBurger');
+        if (heroBurger) {
+            let heroFrames = ['bur1.png', 'bur2.png', 'bur3.png'];
+            let heroIndex = 0;
+            setInterval(function () {
+                heroBurger.src = heroFrames[heroIndex];
+                heroIndex++;
+                if (heroIndex >= heroFrames.length) heroIndex = 0;
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
