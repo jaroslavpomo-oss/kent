@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схавал kenta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <a class="logo" href="index.html">/// Схавал <span>kenta</span></a>
+            <div class="nav">
+                <a href="index.html" id="nav-home">Меню</a>
+                <a href="promo.html" id="nav-promo">Акции</a>
+                <a href="about.html" class="active" id="nav-about2">О нас</a>
+                <a class="cart" onclick="openCart()">
+                    🛒 <span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <a class="profile-btn" href="profile.html" id="nav-profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+                        <path
+                            d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z" />
+                    </svg>
+                </a>
+            </div>
+        </header>
+
+        <h1 class="page-title">О нас</h1>
+
+        <div class="rest-tabs">
+            <button class="rest-tab active" onclick="switchTab('map',this)">Карта</button>
+            <button class="rest-tab" onclick="switchTab('vacancies',this)">Вакансии</button>
+            <button class="rest-tab" onclick="switchTab('about',this)">О заведении</button>
+        </div>
+
+        <div id="rtab-map">
+            <div style="background:#0a0a0a;border:1px solid #1a1a1a;border-radius:18px;overflow:hidden;">
+                <script type="text/javascript" charset="utf-8" async
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A766da24a5356ea1ac4729440b172057c59a170a69f3372143c3693580da7311b&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+
+        <div id="rtab-vacancies" style="display:none;">
+            <div class="vacancy-grid">
+                <div class="vacancy-card">
+                    <div>
+                        <div class="v-title">Кассир-оператор</div>
+                        <div class="v-meta">Полная занятость · Центр · Опыт не требуется</div>
+                    </div>
+                    <div class="vacancy-salary">от 45 000 ₽</div><button class="btn-primary">Откликнуться</button>
+                </div>
+                <div class="vacancy-card">
+                    <div>
+                        <div class="v-title">Повар горячего цеха</div>
+                        <div class="v-meta">Полная занятость · Все точки · Опыт от 1 года</div>
+                    </div>
+                    <div class="vacancy-salary">от 60 000 ₽</div><button class="btn-primary">Откликнуться</button>
+                </div>
+                <div class="vacancy-card">
+                    <div>
+                        <div class="v-title">Менеджер смены</div>
+                        <div class="v-meta">Полная занятость · Все точки · Опыт от 2 лет</div>
+                    </div>
+                    <div class="vacancy-salary">от 75 000 ₽</div><button class="btn-primary">Откликнуться</button>
+                </div>
+                <div class="vacancy-card">
+                    <div>
+                        <div class="v-title">Курьер доставки</div>
+                        <div class="v-meta">Частичная занятость · Свободный график</div>
+                    </div>
+                    <div class="vacancy-salary">от 50 000 ₽</div><button class="btn-primary">Откликнуться</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="rtab-about" style="display:none;">
+            <div class="about-text">
+                <p>Добро пожаловать в «Схавал kenta»! Здесь пахнет жареным луком и свежей булочкой, а курочка всегда
+                    золотистая и хрустит так, что слышно за версту. Мы не заставляем ждать - ваши любимые бургеры,
+                    крылья и картофель фри готовятся мгновенно. Идеальное место, чтобы быстро перекусить после учебы,
+                    работы или просто порадовать себя вкусным хот-догом. Заходите, у нас вкусно и по-соседски душевно!
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Ресторанов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500k+</div>
+                    <div class="stat-label">Гостей в год</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">Средняя оценка</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h2>🛒 <span>Корзина</span></h2><button onclick="closeCart()">✕</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+        <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
+    </div>
+    <div id="overlay" class="overlay" onclick="closeCart()"></div>
+    <div id="orderModal" class="order-modal">
+        <h2>Заказ оформлен!</h2>
+        <p>Ваш заказ принят и готовится</p>
+        <div class="time">67 минут</div>
+        <p style="font-size: 0.95rem; color: #666;">Время ожидания</p>
+        <button onclick="closeOrderModal()">Отлично!</button>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script src="cart.js"></script>
+    <script>
+        function switchTab(id, btn) {
+            document.querySelectorAll('[id^="rtab-"]').forEach(t => t.style.display = 'none');
+            document.querySelectorAll('.rest-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById('rtab-' + id).style.display = 'block';
+            if (btn) btn.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
